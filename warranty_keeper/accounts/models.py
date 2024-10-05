@@ -61,7 +61,7 @@ class WarrantyKeeperUser(auth_models.AbstractBaseUser, auth_models.PermissionsMi
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
 
-    objects = WarrantyKeeperUserManager
+    objects = WarrantyKeeperUserManager()
 
     def __str__(self) -> str:
         return self.email
