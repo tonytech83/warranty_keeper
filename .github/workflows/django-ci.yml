@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  test:
+  Build_and_Run:
     runs-on: ubuntu-latest
 
     steps:

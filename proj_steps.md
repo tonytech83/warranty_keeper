@@ -5,6 +5,9 @@ My try to create a simple web app to care my warranties in one place.
 Steps to perform:
 
 1. Construct and create DB.
+
+	- table for users
+	
 	- table for warranties
 	  - date
 	  - name

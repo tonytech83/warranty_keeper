@@ -1,11 +1,8 @@
 from django.contrib import admin
 from django.contrib.auth import get_user_model
-from django.contrib.auth.models import User
 
 from warranty_keeper.accounts.models import Profile
 
-# Unregister the default User model
-admin.site.unregister(User)
 
 UserModel = get_user_model()
 

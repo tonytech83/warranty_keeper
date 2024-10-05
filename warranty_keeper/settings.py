@@ -38,7 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'rest_framework',
+
     'warranty_keeper.accounts',
+    'warranty_keeper.warranties',
+    'warranty_keeper.suppliers',
 ]
 
 MIDDLEWARE = [
@@ -123,3 +127,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'accounts.WarrantyKeeperUser'
+# LOGIN_URL = reverse_lazy('login-user')
+# LOGOUT_REDIRECT_URL = reverse_lazy('dashboard')
+# LOGIN_REDIRECT_URL = reverse_lazy('home-page')

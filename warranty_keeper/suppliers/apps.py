@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class WarrantiesConfig(AppConfig):
+class SuppliersConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'warranty_keeper.warranties'
+    name = 'warranty_keeper.suppliers'
