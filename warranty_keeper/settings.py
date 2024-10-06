@@ -107,4 +107,4 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "accounts.WarrantyKeeperUser"
 LOGIN_URL = reverse_lazy('login-user')
-LOGIN_REDIRECT_URL = reverse_lazy('home-page')
+LOGIN_REDIRECT_URL = reverse_lazy('dashboard')

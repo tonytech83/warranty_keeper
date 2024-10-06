@@ -12,8 +12,7 @@ class LoginView(auth_views.LoginView):
     form_class = LoginUserForm
     template_name = "accounts/login-page.html"  # TODO: fix template
 
-    # TODO: To fullfil `success_url`
-    success_url = reverse_lazy()
+    success_url = reverse_lazy('dashboard')
 
 
 def logout_user(request):
@@ -27,8 +26,7 @@ class RegisterUserView(views.CreateView):
     template_name = "accounts/register-page.html"  # TODO: fix template
     form_class = UserRegistrationForm
 
-    # TODO: To fullfil `success_url`
-    success_url = reverse_lazy()
+    success_url = reverse_lazy('dashboard')
 
 
 class PasswordChangeView(auth_views.PasswordChangeView):
