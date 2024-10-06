@@ -1,3 +1,4 @@
+@import "colors.css";
 @import "home.css";
 @import "nav.css";
 @import "profile.css";
@@ -13,27 +14,6 @@
 @import "system-messages.css";
 
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
-
-:root {
-  /* Nord colors */
-  --black-color: #2a303c;
-  --white-color: #d8dee9;
-  --gray1-color: #3b4252;
-  --gray2-color: #606672;
-  --gray3-color: #6d8dad;
-  --blue-color: #81a1c1;
-  --green-color: #89b482;
-  --red-color: #d57780;
-  --orange-color: #caaa6a;
-  --yellow-color: #ebcb8b;
-  --pink-color: #e39a83;
-
-  --background-color: #373737;
-  --primary-color: #acbabf;
-  --secondary-color: #6c757d;
-  --text-color: #c0c0c2;
-  --text-error: #ff0000;
-}
 
 * {
   margin: 0;

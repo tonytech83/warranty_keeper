@@ -19,8 +19,7 @@ class LoginView(auth_views.LoginView):
 def logout_user(request):
     logout(request)
 
-    # TODO: To fullfil `redirect`
-    return redirect()
+    return redirect('home-page')
 
 
 class RegisterUserView(views.CreateView):

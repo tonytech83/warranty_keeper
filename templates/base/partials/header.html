@@ -1,9 +1,7 @@
 {% load static %}
 
-<img class="logo" src="{% static 'img/app_logo.svg' %}" alt="logo" />
-
 <nav>
-  <ul class="nav-links">
+  <ul class="nav-links-menu">
     {% if request.user.is_authenticated %}
     <li class="link-item">
       <a class="link-item-link" href="{% url 'home-page' %}">Home</a>
@@ -23,13 +21,18 @@
 </nav>
 
 {% if request.user.is_authenticated %}
-<ul class="nav-links">
+<ul class="nav-links-user">
   <li class="link-item">
     <span>WELCOME, </span>
-    <a class="link-item-link" href="#">{{request.user.email}}</a>
+    <a class="link-item-link" href="#">{{request.user.email|upper}}</a>
   </li>
+  <span class="delimiter">/<span>
   <li>
-    <a class="link-item-link" href="{% url 'logout-user' %}">Logout</a>
+    <a class="link-item-link" href="{% url 'change-password' %}">CHANGE PASSWORD</a>
+  </ll>
+  <span class="delimiter">/<span>
+  <li>
+    <a class="link-item-link" href="{% url 'logout-user' %}">LOG OUT</a>
   </ll>
 </ul>
 
