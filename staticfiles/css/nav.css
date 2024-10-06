@@ -3,23 +3,23 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 0 2%;
-  background: var(--background-color);
+  background: var(--gray1-color);
   box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+  height: 40px;
 }
 
 .link-item,
 .link-item-link {
   font-weight: 500;
-  font-size: 22px;
-  color: var(--text-color);
+  color: var(--white-color);
   text-decoration: none;
 }
 
 .logo {
-  height: 60px;
-  width: 60px;
+  height: 40px;
+  width: 40px;
   background: transparent;
-  color: var(--text-color);
+  /* color: var(--white-color); */
 }
 
 .nav-links {
@@ -30,6 +30,7 @@ header {
 .nav-links li {
   display: inline-block;
   padding: 0 20px;
+  font-size: 18px;
 }
 
 .nav-links li a {
@@ -37,18 +38,17 @@ header {
 }
 
 .nav-links li:hover {
-  /* background: coral; */
-  border-bottom: 3px;
-  border-color: coral;
-  transition: all 0.3s ease 0s;
+  border-bottom: 2px solid var(--orange-color);
+  font-size: 16px;
+  /* transition: all 0.3s ease 0s; */
 }
 
 
 /*Menu for Profile*/
 .profile-image {
   display: inline-block;
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  /* width: 30px; */
   text-align: center;
   /*padding: 4px 8px 4px 7px;*/
   border-radius: 50%;

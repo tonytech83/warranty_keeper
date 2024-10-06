@@ -1,9 +1,9 @@
 .footer {
   text-align: center;
-  background: var(--background-color);
+  background: var(--gray1-color);
   padding: 10px 0;
   box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
-  color: var(--text-color);
+  color: var(--white-color);
 }
 
 @media (max-height: 1080px) {

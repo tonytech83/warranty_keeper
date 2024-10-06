@@ -4,19 +4,14 @@
 
 <nav>
   <ul class="nav-links">
-    {% if request.user.is_authenticated %} {% comment %}
-    <li class="link-item">
-      <a class="link-item-link" href="{% url 'dashboard' %}">Dashboard</a>
-    </li>
-    {% endcomment %}
+    {% if request.user.is_authenticated %}
     <li class="link-item">
       <a class="link-item-link" href="{% url 'home-page' %}">Home</a>
     </li>
-    {% comment %}
     <li class="link-item">
       <a class="link-item-link" href="{% url 'supplier-list' %}">Suppliers</a>
     </li>
-    {% endcomment %} {% else %}
+    {% else %}
     <li class="link-item">
       <a class="link-item-link" href="{% url 'login-user' %}">Login</a>
     </li>
@@ -26,47 +21,16 @@
     {% endif %}
   </ul>
 </nav>
-{% if request.user.is_authenticated %}
-<div class="dropdown" data-bs-theme="dark">
-  <a
-    class="dropdown-toggle"
-    href="#"
-    role="button"
-    id="dropdownMenuLink"
-    data-bs-toggle="dropdown"
-    aria-expanded="false"
-  >
-    {% if request.user.profile.profile_pic %}
-    <img
-      class="profile-image"
-      src="{{ request.user.profile.profile_pic.url }}"
-      alt="Profile"
-    />
-    {% else %}
-    <p class="profile-image initials">{{ request.user.profile.initials }}</p>
-    {% endif %}
-  </a>
 
-  <ul
-    class="dropdown-menu dropdown-menu-lg-end"
-    aria-labelledby="dropdownMenuLink"
-  >
-    <li><h1 class="dropdown-header">{{ request.user }}</h1></li>
-    <li>
-      <h1 class="dropdown-header">{{ request.user.profile.full_name }}</h1>
-    </li>
-    {% comment %}
-    <li>
-      <a class="dropdown-item" href="{% url 'details-profile' %}">Profile</a>
-    </li>
-    <li>
-      <a class="dropdown-item" href="{% url 'password-change' %}"
-        >Change password</a
-      >
-    </li>
-    <li><a class="dropdown-item" href="{% url 'logout-user' %}">Logout</a></li>
-    {% endcomment %}
-  </ul>
-</div>
+{% if request.user.is_authenticated %}
+<ul class="nav-links">
+  <li class="link-item">
+    <span>WELCOME, </span>
+    <a class="link-item-link" href="#">{{request.user.email}}</a>
+  </li>
+  <li>
+    <a class="link-item-link" href="{% url 'logout-user' %}">Logout</a>
+  </ll>
+</ul>
 
 {% endif %}
