@@ -33,12 +33,12 @@ jobs:
     - name: Run Django server
       run: |
         python manage.py runserver 0.0.0.0:8000 &
-      # You can add `wait` or `sleep` commands to give the server some time to start
+        sleep 10
 
     - name: Run health check on the server
       run: |
         curl http://127.0.0.1:8000/
 
-    - name: Stop the server (optional, but useful)
+    - name: Stop the server
       run: |
         pkill -f runserver

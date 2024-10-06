@@ -1,8 +1,10 @@
 from django.db import models
-
+from django.contrib.auth import get_user_model
 from django.core.validators import MinLengthValidator
 
 from phonenumber_field.modelfields import PhoneNumberField
+
+UserModel = get_user_model()
 
 
 class Supplier(models.Model):
@@ -34,6 +36,13 @@ class Supplier(models.Model):
     website = models.URLField(
         null=True,
         blank=True,
+    )
+
+    owner = models.ForeignKey(
+        to=UserModel,
+        on_delete=models.CASCADE,
+        null=False,
+        blank=False,
     )
 
     def __str__(self):

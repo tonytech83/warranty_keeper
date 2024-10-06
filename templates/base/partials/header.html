@@ -4,7 +4,10 @@
   <ul class="nav-links-menu">
     {% if request.user.is_authenticated %}
     <li class="link-item">
-      <a class="link-item-link" href="{% url 'home-page' %}">Home</a>
+      <a class="link-item-link" href="{% url 'dashboard' %}">Dashboard</a>
+    </li>
+    <li class="link-item">
+      <a class="link-item-link" href="{% url 'warranty-list' %}">Waranties</a>
     </li>
     <li class="link-item">
       <a class="link-item-link" href="{% url 'supplier-list' %}">Suppliers</a>
