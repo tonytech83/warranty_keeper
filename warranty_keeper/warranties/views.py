@@ -64,6 +64,17 @@ class WarrantiesListView(views.ListView):
                 if not w.is_expired and w.days_before_expiration <= 30
             ]
 
+        # Free-text search over the Item and Supplier columns (case-insensitive).
+        query = self.request.GET.get("q", "").strip()
+        if query:
+            needle = query.lower()
+            warranties = [
+                w
+                for w in warranties
+                if needle in w.item_name.lower()
+                or (w.supplier and needle in w.supplier.name.lower())
+            ]
+
         sort, direction = self._resolve_sort()
         key = next(c[2] for c in self.SORT_COLUMNS if c[0] == sort)
         warranties.sort(key=key, reverse=(direction == "desc"))
@@ -72,7 +83,9 @@ class WarrantiesListView(views.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         status = self.request.GET.get("status")
+        query = self.request.GET.get("q", "").strip()
         context["filter_label"] = self.STATUS_LABELS.get(status)
+        context["search_query"] = query
 
         sort, direction = self._resolve_sort()
         columns = []
@@ -83,6 +96,8 @@ class WarrantiesListView(views.ListView):
             params = {"sort": name, "dir": next_dir}
             if status:
                 params["status"] = status
+            if query:
+                params["q"] = query
             columns.append(
                 {
                     "label": label,

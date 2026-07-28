@@ -1,14 +1,20 @@
 {% extends "base/base.html" %} {% block main_content %}
 
-<div class="top-btns">
-  <div class="empty-top-left-btn">EMPTY-TOP-LEFT-BTN</div>
-  <div class="empty-top-right-btn">EMPTY-TOP-RIGHT-BTN</div>
-</div>
+<form class="warranties-toolbar" method="get" action="{% url 'warranties-list' %}" role="search">
+  {# Keep the active status filter and sort when searching. #}
+  {% if request.GET.status %}<input type="hidden" name="status" value="{{ request.GET.status }}" />{% endif %}
+  {% if request.GET.sort %}<input type="hidden" name="sort" value="{{ request.GET.sort }}" />{% endif %}
+  {% if request.GET.dir %}<input type="hidden" name="dir" value="{{ request.GET.dir }}" />{% endif %}
+  <input class="search-input" type="search" name="q" value="{{ search_query }}"
+    placeholder="Search by item or supplier…" aria-label="Search warranties" />
+  <button class="search-btn" type="submit">Search</button>
+  <a class="create-btn" href="{% url 'warranty-create' %}">Create Warranty</a>
+</form>
 
 {% if filter_label %}
 <div class="list-filter">
   <h2 class="list-filter-title">{{ filter_label }}</h2>
-  <a class="list-filter-clear" href="{% url 'warranties-list' %}">Show all</a>
+  <a class="list-filter-clear" href="{% url 'warranties-list' %}{% if search_query %}?q={{ search_query|urlencode }}{% endif %}">Show all</a>
 </div>
 {% endif %}
 
@@ -40,14 +46,7 @@
   </table>
 </div>
 {%else%}
-<div class="no-items">NO WARRANTIES YET!</div>
+<div class="no-items">{% if search_query or filter_label %}No warranties match.{% else %}NO WARRANTIES YET!{% endif %}</div>
 {%endif%}
-
-<div class="bottom-btns">
-  <div class="empty-bottom-left-btn">EMPTY-BOTTOM-LEFT-BTN</div>
-  <div class="action-bottom-right-btn">
-    <a href="{% url 'warranty-create' %}">Create Warranty</a>
-  </div>
-</div>
 
 {% endblock %}
