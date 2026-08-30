@@ -11,6 +11,7 @@ from .forms import WarrantyCreateForm, WarrantyUpdateForm, WarrantyDeleteForm
 class WarrantiesListView(views.ListView):
     model = Warranty
     template_name = "warranties/warranties-list.html"
+    paginate_by = 15
 
     # ?status= values -> heading shown on the list page. Filtering happens in
     # Python because expiry is a computed property, not a database column.

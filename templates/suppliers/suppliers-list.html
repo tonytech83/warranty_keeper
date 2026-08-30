@@ -1,23 +1,23 @@
 {% extends 'base/base.html' %} {% load static %} {% block main_content %}
 
-<div class="top-btns">
-  <div class="empty-top-left-btn">EMPTY-TOP-LEFT-BTN</div>
-  <div class="empty-top-right-btn">EMPTY-TOP-RIGHT-BTN</div>
-</div>
+<form class="list-toolbar" method="get" action="{% url 'suppliers-list' %}" role="search">
+  <input class="search-input" type="search" name="q" value="{{ search_query }}"
+    placeholder="Search by supplier name…" aria-label="Search suppliers" />
+  <a class="create-btn" href="{% url 'supplier-create' %}">Create Supplier</a>
+</form>
 
-<div class="supplier-list">
-  {% for supplier in object_list %} 
+{% if object_list %}
+<div class="supplier-list" id="supplier-list">
+  {% for supplier in object_list %}
   {% include 'suppliers/partials/supplier-card.html' with supplier=supplier%}
-   {%empty%}
-  <div class="no-items">NO SUPPLIERS YET!</div>
-  {%endfor%}
+  {% endfor %}
 </div>
+<nav class="pager" id="supplier-pager" aria-label="Pagination" hidden></nav>
+{% else %}
+<div class="no-items">{% if search_query %}No suppliers match.{% else %}NO SUPPLIERS YET!{% endif %}</div>
+{% endif %}
 
-<div class="bottom-btns">
-  <div class="empty-bottom-left-btn">EMPTY-BOTTOM-LEFT-BTN</div>
-  <div class="action-bottom-right-btn">
-    <a href="{% url 'supplier-create' %}">Create Supplier</a>
-  </div>
-</div>
+<script src="{% static 'js/list-search.js' %}?v=1"></script>
+<script src="{% static 'js/supplier-pagination.js' %}?v=1"></script>
 
 {% endblock %}
