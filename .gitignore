@@ -11,3 +11,6 @@ venv/
 static/
 mediafiles/
 data/
+CLAUDE.md
+decisions.md
+session-log.md

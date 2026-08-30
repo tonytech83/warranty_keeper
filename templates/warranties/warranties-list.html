@@ -1,13 +1,12 @@
-{% extends "base/base.html" %} {% block main_content %}
+{% extends "base/base.html" %} {% load static %} {% block main_content %}
 
-<form class="warranties-toolbar" method="get" action="{% url 'warranties-list' %}" role="search">
+<form class="list-toolbar" method="get" action="{% url 'warranties-list' %}" role="search">
   {# Keep the active status filter and sort when searching. #}
   {% if request.GET.status %}<input type="hidden" name="status" value="{{ request.GET.status }}" />{% endif %}
   {% if request.GET.sort %}<input type="hidden" name="sort" value="{{ request.GET.sort }}" />{% endif %}
   {% if request.GET.dir %}<input type="hidden" name="dir" value="{{ request.GET.dir }}" />{% endif %}
   <input class="search-input" type="search" name="q" value="{{ search_query }}"
     placeholder="Search by item or supplier…" aria-label="Search warranties" />
-  <button class="search-btn" type="submit">Search</button>
   <a class="create-btn" href="{% url 'warranty-create' %}">Create Warranty</a>
 </form>
 
@@ -21,7 +20,7 @@
 {% if object_list%}
 
 <div class="warranties">
-  <table class="warranties-table">
+  <table class="warranties-table" id="warranties-table">
     <tr>
       {% for col in columns %}
       <th{% if forloop.first %} class="first-left"{% endif %}>
@@ -45,8 +44,11 @@
     {%endfor%}
   </table>
 </div>
+{% include "base/partials/pagination.html" %}
 {%else%}
 <div class="no-items">{% if search_query or filter_label %}No warranties match.{% else %}NO WARRANTIES YET!{% endif %}</div>
 {%endif%}
+
+<script src="{% static 'js/list-search.js' %}?v=1"></script>
 
 {% endblock %}

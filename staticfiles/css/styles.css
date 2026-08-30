@@ -323,15 +323,15 @@ nav {
     line-height: 1;
 }
 
-/* Search toolbar above the warranties table: search fills the width, with the
-   Create Warranty button on the same row. */
-.warranties-toolbar {
+/* Search toolbar above a list (warranties table / suppliers grid): search
+   fills the width, with the Create button on the same row. */
+.list-toolbar {
     display: flex;
     align-items: center;
     gap: 12px;
     margin-bottom: 16px;
 }
-.warranties-toolbar .search-input {
+.list-toolbar .search-input {
     flex: 1;
     min-width: 0;
     height: 36px;
@@ -342,15 +342,14 @@ nav {
     color: var(--text);
     font-size: 14px;
 }
-.warranties-toolbar .search-input::placeholder {
+.list-toolbar .search-input::placeholder {
     color: var(--text-faint);
 }
-.warranties-toolbar .search-input:focus {
+.list-toolbar .search-input:focus {
     outline: none;
     border-color: var(--accent);
 }
-.warranties-toolbar .search-btn,
-.warranties-toolbar .create-btn {
+.list-toolbar .create-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -363,25 +362,13 @@ nav {
     text-decoration: none;
     white-space: nowrap;
     cursor: pointer;
-}
-.warranties-toolbar .search-btn {
-    border: 1px solid var(--border-2);
-    background: var(--bg-2);
-    color: var(--text);
-    transition: border-color 0.15s, color 0.15s;
-}
-.warranties-toolbar .search-btn:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-}
-.warranties-toolbar .create-btn {
     border: 1px solid transparent;
     background: var(--accent);
     color: #20160a;
     font-weight: 700;
     transition: background 0.15s;
 }
-.warranties-toolbar .create-btn:hover {
+.list-toolbar .create-btn:hover {
     background: var(--accent-2);
 }
 
@@ -605,6 +592,11 @@ nav {
         transform 0.12s,
         color 0.15s;
 }
+/* Explicit display:flex above otherwise beats the browser's default
+   [hidden] rule, so hiding a card for pagination needs this override. */
+.supplier-card[hidden] {
+    display: none;
+}
 .supplier-card:hover {
     border-color: var(--accent);
     color: var(--accent);
@@ -797,6 +789,48 @@ a.kpi-card:hover {
 .list-filter-clear {
     font-size: 13px;
     white-space: nowrap;
+}
+
+/* Pagination controls below a paginated list. */
+.pager {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 20px;
+}
+.pager-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 34px;
+    height: 34px;
+    padding: 0 10px;
+    border-radius: 7px;
+    border: 1px solid var(--border-2);
+    background: var(--bg-2);
+    color: var(--text-dim);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition:
+        border-color 0.15s,
+        color 0.15s,
+        background 0.15s;
+}
+a.pager-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+.pager-current {
+    background: var(--accent);
+    border-color: transparent;
+    color: #20160a;
+}
+.pager-disabled {
+    opacity: 0.4;
+    cursor: default;
 }
 
 /* Panels */

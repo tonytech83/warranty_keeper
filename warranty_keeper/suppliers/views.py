@@ -13,7 +13,16 @@ class SupplierListView(views.ListView):
     template_name = "suppliers/suppliers-list.html"
 
     def get_queryset(self):
-        return Supplier.objects.filter(deleted=False)
+        suppliers = Supplier.objects.filter(deleted=False)
+        query = self.request.GET.get("q", "").strip()
+        if query:
+            suppliers = suppliers.filter(name__icontains=query)
+        return suppliers.order_by("name")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["search_query"] = self.request.GET.get("q", "").strip()
+        return context
 
 
 class SupplierDetailsView(views.DetailView):
